@@ -29,7 +29,3 @@ Extra tools needed: Ngrok.
 16. The two clients should quickly be connected and be able to receive each other's audio/video streams.
 17. Click on 'close connection' on any of the clients to terminate the connection.
 18. You can re-connect without reloading the webpage. Repeat steps 14-16 to reconnect.
-
-# Inspired by
-
-Youtube: https://youtu.be/g42yNO_dxWQ?si=4G2NeL-27lQdl5ca
