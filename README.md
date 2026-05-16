@@ -1,31 +1,93 @@
-# What is this?
+# WebRTC Video Conferencing App
 
-A simple video conferencing application that enables two peers to connect to each other with their audio-video streams.<br>
-Created using React.js.<br>
-It uses WebRTC (Web Real-Time Collaboration) as the underlying technology to connect two peers.<br>
-Uses socket.io for the signaling server.
+A minimal real-time video conferencing application built using WebRTC, React.js and Socket.IO.
 
-# How to use it?
+This project enables two peers to establish a direct peer-to-peer audio/video connection through WebRTC, with Socket.IO used for signaling between clients.
 
-Extra tools needed: Ngrok.
+The project was developed as a college mini project and includes optimizations using **Trickle ICE** to significantly reduce connection setup time. Cross-platform connectivity was also tested successfully across different devices and networks using Ngrok.
 
-1. Clone this repo.
-2. Make sure you are on the branch 'trickle', the one with the latest changes.
-3. Delete the 'package-lock.json' files wherever you see them.
-4. Go to each directory that contains a 'package.json' file, and run 'npm install' there.
-5. Add a '.env' file in the root of this project, and declare this variable in it:
-    1. REACT_APP_SERVER_URL: paste your Ngrok url for the server (server.js). It is recommended that you make this url permanent by creating a free account on Ngrok. The local url for the server will be 'http://localhost:5000'.
-6. Add a '.env' file in the directory 'signaling_server', and declare this variable in it:
-    1. REACT_APP_NGROK_URL: paste your Ngrok url for the client (App.js). This url will change each time you run Ngrok, if you are using the free version. The local url for the client will be 'https://localhost:3000'.
-7. Set up 'https' for your localhost (client), since it is required to access the camera / microphone of the user.
-8. In the 'signaling_server' directory, run 'npm install nodemon' and 'npm install dotenv' if they are not already installed.
-9. Start the Ngrok tunnels to your client and server.
-10. Start the server by running 'nodemon server.js' in the 'signaling_server' directory.
-11. Run 'npm start' in the 'src' directory to start the client.
-12. Go to 'https://localhost:3000' to access the client (App.js).
-13. In another tab, go to the same localhost url. Alternatively, go to the url of the client as determined by Ngrok, on a different device (such as a mobile phone).
-14. Click 'open connection' on one of the clients.
-15. The other client's button should now say 'answer connection'. Click on that.
-16. The two clients should quickly be connected and be able to receive each other's audio/video streams.
-17. Click on 'close connection' on any of the clients to terminate the connection.
-18. You can re-connect without reloading the webpage. Repeat steps 14-16 to reconnect.
+## Features
+
+- Real-time peer-to-peer video/audio communication
+- WebRTC-based connection handling
+- Socket.IO signaling server
+- Faster connection setup using Trickle ICE
+- Cross-device and cross-network working verified using Ngrok
+- Ability to reconnect without refreshing the page
+
+## Tech Stack
+
+### Frontend
+- React.js
+
+### Backend
+- Express.js
+- Socket.IO
+
+### Real-Time Communication
+- WebRTC
+- Trickle ICE
+
+### Testing / Tunneling
+- Ngrok
+
+## How It Works
+
+1. Two clients open the application.
+2. Socket.IO is used to exchange signaling data between peers.
+3. WebRTC establishes a direct peer-to-peer connection.
+4. Audio and video streams are exchanged directly between clients.
+
+The signaling server is only responsible for connection negotiation and is not involved in media streaming after the connection is established.
+
+## Setup Instructions
+### Prerequisites
+* Node.js
+* Ngrok
+* HTTPS enabled for localhost (required for camera/microphone access)
+
+### Installation
+#### 1. Clone the Repository
+`git clone <repo-url>`
+
+#### 2. Switch to the Latest Branch
+`git checkout trickle`
+
+#### 3. Install Dependencies
+Run the following inside every directory containing a package.json file:
+`npm install`
+
+### Environment Variables
+1. Root Directory
+Create a `.env` file in the project root:
+`REACT_APP_SERVER_URL=<your-ngrok-server-url>`
+
+Example local server URL:
+`http://localhost:5000`
+
+2. `signaling_server` directory
+Create another `.env` file inside `signaling_server`:
+`REACT_APP_NGROK_URL=<your-ngrok-client-url>`
+
+Example local client URL:
+`https://localhost:3000`
+
+## Running the Application
+### 1. Start Ngrok Tunnels
+Expose both:
+* React client
+* Signaling server
+
+### 2. Start the Signaling Server
+Inside `signaling_server`: `nodemon server.js`
+
+### 3. Start the React Client
+`npm start`
+
+## Using the Application
+1. Open the client in two browser tabs or on two separate devices.
+2. On one client, click: `Open Connection`
+3. On the second client, click: `Answer Connection`
+4. The peers should connect and begin exchanging audio/video streams.
+5. Either client can terminate the session using: `Close Connection`
+6. The connection can be re-established without refreshing the page.
