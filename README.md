@@ -43,8 +43,8 @@ The signaling server is only responsible for connection negotiation and is not i
 ## Setup Instructions
 ### Prerequisites
 * Node.js
-* Ngrok
-* HTTPS enabled for localhost (required for camera/microphone access)
+* Ngrok (free)
+* HTTPS enabled for localhost (required for camera/microphone access) - such as through `mkcert`
 
 ### Installation
 #### 1. Clone the Repository
@@ -59,17 +59,15 @@ Run the following inside every directory containing a package.json file:
 
 ### Environment Variables
 1. Root Directory
-Create a `.env` file in the project root:
-`REACT_APP_SERVER_URL=<your-ngrok-server-url>`
-
-Example local server URL:
+*  Create a `.env` file in the project root:
+  `REACT_APP_SERVER_URL=<your-ngrok-server-url>`
+*  Example local server URL:
 `http://localhost:5000`
 
-2. `signaling_server` directory
-Create another `.env` file inside `signaling_server`:
+2. `signaling_server` directory:
+*  Create another `.env` file inside `signaling_server`:
 `REACT_APP_NGROK_URL=<your-ngrok-client-url>`
-
-Example local client URL:
+*  Example local client URL:
 `https://localhost:3000`
 
 ## Running the Application
