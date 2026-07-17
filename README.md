@@ -6,7 +6,7 @@ This project enables two peers to establish a direct peer-to-peer audio/video co
 
 The project was developed as a college mini project and includes optimizations using **Trickle ICE** to significantly reduce connection setup time. Cross-platform connectivity was also tested successfully across different devices and networks using Ngrok.
 
-[Watch Demo on YouTube](https://youtu.be/UCjCBbjZPSQ)
+[Watch Demo on YouTube](https://youtu.be/dtX3JcCir84)
 
 ## Features
 
